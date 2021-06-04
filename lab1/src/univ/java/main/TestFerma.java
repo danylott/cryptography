@@ -19,12 +19,10 @@ public class TestFerma {
         if (n.equals(BigInteger.ONE))
             return false;
 
-        // Run Fermat Test for some numbers
         for (int i = 0; i < maxIterations; i++) {
             BigInteger a = getRandomFermatBase(n);
-            a = a.modPow(n.subtract(BigInteger.ONE), n);    // a^(n - 1) mod n
+            a = a.modPow(n.subtract(BigInteger.ONE), n);
 
-            // If (a^(n - 1) mod n) != 1 then n is definitely not prime
             if (!a.equals(BigInteger.ONE))
                 return false;
         }
@@ -38,6 +36,6 @@ public class TestFerma {
         System.out.println("check prime 97 ? " + checkPrime(BigInteger.valueOf(97), 10));
         System.out.println("check prime 113 ? " + checkPrime(BigInteger.valueOf(113), 10));
         System.out.println("check prime 561 ? " + checkPrime(BigInteger.valueOf(561), 10));
-        System.out.println("check prime 1234567907 ? " + checkPrime(BigInteger.valueOf(1234567907), 10));
+        System.out.println("check prime 1528494823 ? " + checkPrime(BigInteger.valueOf(1528494823), 10));
     }
 }

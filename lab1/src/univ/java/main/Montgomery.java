@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 public class Montgomery {
-    private static BigInteger MR(BigInteger T, BigInteger N, BigInteger R, int pow) {
+    private static BigInteger MontgomeryRepresentation(BigInteger T, BigInteger N, BigInteger R, int pow) {
         BigInteger[] array = ExtendedEuclid.extendedAlgorithm(N, R);
         BigInteger d = array[0];
 
@@ -29,15 +29,15 @@ public class Montgomery {
     public static BigInteger multiply(BigInteger a, BigInteger b, BigInteger R, BigInteger N, int pow) {
         BigInteger a1 = a.shiftLeft(pow).mod(N);
         BigInteger b1 = b.shiftLeft(pow).mod(N);
-        BigInteger c1 = MR(a1.multiply(b1), N, R, pow);
-        return MR(c1, N, R, pow);
+        BigInteger c1 = MontgomeryRepresentation(a1.multiply(b1), N, R, pow);
+        return MontgomeryRepresentation(c1, N, R, pow);
     }
 
     public static BigInteger pow(BigInteger a, BigInteger e, BigInteger R, BigInteger N, int pow) {
         BigInteger a1 = a.shiftLeft(pow).mod(N);
         BigInteger x1 = BigInteger.ONE;
         while (e.compareTo(BigInteger.ZERO) > 0) {
-            x1 = MR(x1.multiply(a1), N, R, pow);
+            x1 = MontgomeryRepresentation(x1.multiply(a1), N, R, pow);
             e = e.subtract(BigInteger.ONE);
         }
         return x1;
@@ -51,7 +51,7 @@ public class Montgomery {
         String oper = in.readLine();
         System.out.print("b = ");
         BigInteger y = new BigInteger(in.readLine());
-        System.out.print("Modulus: ");
+        System.out.print("Module: ");
         BigInteger N = new BigInteger(in.readLine());
         System.out.print("R: ");
         BigInteger R = new BigInteger(in.readLine());

@@ -6,7 +6,7 @@ import static java.math.BigInteger.*;
 
 public class BinPow {
 
-    public static BigInteger binPow(BigInteger a, BigInteger b, BigInteger mod) { //a^b
+    public static BigInteger binPow(BigInteger a, BigInteger b, BigInteger mod) {
         if (b.equals(ZERO))
             return ONE;
         if (b.equals(ONE))
@@ -31,13 +31,11 @@ public class BinPow {
                 b=b.add(ONE);
                 for (int k = 0; k < 100; k++) {
                     c=c.add(ONE);
-                    if (!binPow(a, b, c).equals(a.modPow(b, c))){
-                        System.out.println("error a="+a+"\tb="+b+"\tc="+c);
-                    }
                 }
             }
         }
-        System.out.println("binPow 99^99= " + binPow(BigInteger.valueOf(99), BigInteger.valueOf(99), BigInteger.valueOf(100)).toString());
+        System.out.println("binPow 199^199= " + binPow(BigInteger.valueOf(199),
+                BigInteger.valueOf(199), BigInteger.valueOf(100)).toString());
         System.out.println("binPow 9^2=" + binPow(TEN.subtract(ONE), TWO, TEN).toString());
         System.out.println("binPow 2^10=" + binPow(TWO, TEN, TWO).toString());
     }

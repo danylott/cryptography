@@ -14,7 +14,7 @@ public class ExtendedEuclidTest {
     public void extendedAlgorithm() {
         BigInteger[] gcd1 = ExtendedEuclid.extendedAlgorithm(new BigInteger(String.valueOf(84)), new BigInteger(String.valueOf(275)));
         Assert.assertEquals(gcd1[0], BigInteger.ONE);
-        Assert.assertEquals(gcd1[1],  new BigInteger("-36"));
+        Assert.assertEquals(gcd1[1], new BigInteger("-36"));
 
         BigInteger[] gcd2 = ExtendedEuclid.extendedAlgorithm(new BigInteger(String.valueOf(100)), new BigInteger(String.valueOf(100)));
         Assert.assertEquals(gcd2[0], new BigInteger("100"));
